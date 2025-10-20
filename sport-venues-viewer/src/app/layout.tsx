@@ -21,6 +21,7 @@ export default function RootLayout({
       <body
         className={`${josephine.variable} $antialiased`}
       >
+        <div> Header </div> 
         {children}
       </body>
     </html>
