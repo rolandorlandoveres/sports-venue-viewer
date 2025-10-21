@@ -1,6 +1,7 @@
 'use client';
 
 import { SportVenue } from '../models/sport-venue';
+import StoreProvider from '../store/StoreProvider';
 import { SportVenuesFilter } from './SportVenuesFilters';
 import { SportVenuesList } from './SportVenuesList';
 import { SportVenuesMap } from './SportVenuesMap';
@@ -11,18 +12,14 @@ export function SportVenuesOverview({
   sportVenues: SportVenue[];
 }) {
   return (
-    <>
+    <StoreProvider sportVenues={sportVenues}>
       <SportVenuesFilter />
 
-      <SportVenuesList />
+      <div className='flex'>
+        <SportVenuesList />
 
-      <SportVenuesMap />
-
-      <ul>
-        {sportVenues.map((sv) => (
-          <li key={sv.id}> {sv.name} </li>
-        ))}
-      </ul>
-    </>
+        <SportVenuesMap />
+      </div>
+    </StoreProvider>
   );
 }

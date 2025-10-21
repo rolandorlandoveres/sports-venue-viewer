@@ -1,3 +1,15 @@
+import { useAppSelector } from '@sport-venues/store/hooks';
+
 export function SportVenuesList() {
-  return <h1> Sport Venues List </h1>;
+  const sportVenues = useAppSelector(
+    (state) => state.sportVenues.allSportVenues,
+  );
+
+  return (
+    <div className='h-100 overflow-y-auto'>
+      {sportVenues.map((sv) => (
+        <div key={sv.id}> {sv.name} </div>
+      ))}
+    </div>
+  );
 }
