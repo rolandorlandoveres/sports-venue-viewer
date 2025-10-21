@@ -1,4 +1,4 @@
-import { useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 
 export function SportVenuesList() {
   const filteredVenues = useAppSelector(

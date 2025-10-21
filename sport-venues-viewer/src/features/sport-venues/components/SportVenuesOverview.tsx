@@ -3,8 +3,8 @@
 import { SportVenue } from '../models/sport-venue';
 import StoreProvider from '../store/StoreProvider';
 import { SportVenuesFilter } from './SportVenuesFilters';
-import { SportVenuesMap } from './SportVenuesMap';
-import { SportVenuesScrollable } from './SportVenuesScrollable';
+import { SportVenuesMap } from './maps/SportVenuesMap';
+import { SportVenuesScrollable } from './scrollable/SportVenuesScrollable';
 
 export function SportVenuesOverview({
   sportVenues,

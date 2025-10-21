@@ -1,6 +1,6 @@
 import { environment } from '@/config/environment';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
-import { useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 
 export function SportVenuesMap() {
   const filteredSportVenues = useAppSelector(

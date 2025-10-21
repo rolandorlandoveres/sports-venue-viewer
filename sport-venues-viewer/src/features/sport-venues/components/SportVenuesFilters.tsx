@@ -13,6 +13,10 @@ export function SportVenuesFilter() {
   const [city, setCityFilter] = useState('');
   const [tag, setTagFilter] = useState('');
 
+  function filter(action: VenuesFilterActionPayload) {
+    dispatch(filterVenues(action));
+  }
+
   function filterOnHandleKeyDown(event: KeyboardEvent<HTMLInputElement>): void {
     if (event.key !== 'Enter') {
       return;
@@ -39,10 +43,6 @@ export function SportVenuesFilter() {
 
   function filterOnIconClick() {
     filter({ city, tag });
-  }
-
-  function filter(action: VenuesFilterActionPayload) {
-    dispatch(filterVenues(action));
   }
 
   return (
