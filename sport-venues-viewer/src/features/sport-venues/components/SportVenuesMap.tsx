@@ -3,8 +3,8 @@ import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { useAppSelector } from '../store/hooks';
 
 export function SportVenuesMap() {
-  const sportVenues = useAppSelector(
-    (state) => state.sportVenues.allSportVenues,
+  const filteredSportVenues = useAppSelector(
+    (state) => state.sportVenues.filteredSportVenues,
   );
 
   return (
@@ -16,7 +16,7 @@ export function SportVenuesMap() {
         gestureHandling='greedy'
         disableDefaultUI
       >
-        {sportVenues.map((sv) => (
+        {filteredSportVenues.map((sv) => (
           <Marker
             key={sv.id}
             position={{ lat: sv.latitude, lng: sv.longitude }}
