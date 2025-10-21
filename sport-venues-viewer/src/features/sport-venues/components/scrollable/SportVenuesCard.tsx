@@ -1,6 +1,7 @@
 import { CellComponentProps } from 'react-window';
 import Image from 'next/image';
 import { SportVenue } from '../../models/sport-venue';
+import { ViewLocationButton } from './ViewLocationButton';
 
 const truncate = (text: string, length = 28) =>
   text.length > length ? `${text.substring(0, length)}...` : text;
@@ -15,7 +16,7 @@ export function SportVenuesCard({
   const item = filteredVenues[itemIndex];
 
   return (
-    <div style={style}>
+    <div style={style} className={'pl-primary'}>
       <Image
         src='/placeholder.png'
         // src={item.mainPhotoUri}
@@ -28,19 +29,11 @@ export function SportVenuesCard({
       {/* <p>{item.id} </p> */}
       <p className='mt-1 text-base font-bold'>{truncate(item.name)} </p>
 
-      <p className='text-foreground-accent mt-1 mb-2 font-[500]'>
+      <p className='text-foreground-accent mt-1 mb-2.5 font-[500]'>
         {item.addressLine2}
       </p>
 
-      <button className='bg-primary text-background flex -skew-x-20 gap-3 p-3 font-bold'>
-        <div className='skew-x-20'>view location</div>
-        <Image
-          src='/right_arrow.svg'
-          width={20}
-          height={20}
-          alt='right-arrow'
-        />
-      </button>
+      <ViewLocationButton onClick={() => {}} />
     </div>
   );
 }

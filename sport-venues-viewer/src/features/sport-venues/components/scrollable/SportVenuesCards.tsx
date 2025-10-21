@@ -14,7 +14,7 @@ export function SportVenuesCards() {
       columnCount={2}
       columnWidth={300}
       rowCount={filteredVenues.length / 2}
-      rowHeight={280}
+      rowHeight={250}
     />
   );
 }

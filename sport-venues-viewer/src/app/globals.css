@@ -3,7 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #333333;
-  --primary: #009dda;
+  --primary: hsla(193, 95%, 40%, 1);
+  --primary-hover: hsla(193, 95%, 30%, 1);
   --primary-space: 1.5rem;
   --separation-border: #eeeeee;
   --input-border: #dddddd;
@@ -16,7 +17,9 @@
   --color-foreground: var(--foreground);
   --font-josephine: var(--font-josephine);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --margin-primary: var(--primary-space);
+  --padding-primary: var(--primary-space);
   --color-separation-border: var(--separation-border);
   --color-input-border: var(--input-border);
   --color-background-accent: var(--background-accent);
