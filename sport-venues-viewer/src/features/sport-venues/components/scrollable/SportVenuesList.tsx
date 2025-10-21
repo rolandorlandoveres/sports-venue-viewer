@@ -1,4 +1,7 @@
+import { List } from 'react-window';
 import { useAppSelector } from '../../store/hooks';
+import { SportVenuesListRow } from './SportVenuesListRow';
+import { SportVenue } from '../../models/sport-venue';
 
 export function SportVenuesList() {
   const filteredVenues = useAppSelector(
@@ -6,12 +9,11 @@ export function SportVenuesList() {
   );
 
   return (
-    <div className='h-150 overflow-y-auto'>
-      {filteredVenues.map((sv) => (
-        <div key={sv.id}>
-          {sv.name} - {sv.addressLine2} - {sv.tag}
-        </div>
-      ))}
-    </div>
+    <List
+      rowComponent={SportVenuesListRow}
+      rowCount={filteredVenues.length}
+      rowHeight={50}
+      rowProps={{ filteredVenues }}
+    />
   );
 }

@@ -1,14 +1,24 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-   async redirects() {
+  async redirects() {
     return [
       {
         source: '/',
         destination: '/sport-venues',
         permanent: true,
       },
-    ]
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 

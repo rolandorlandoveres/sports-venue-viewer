@@ -8,6 +8,7 @@
   --separation-border: #eeeeee;
   --input-border: #dddddd;
   --background-accent: #d9d9d9;
+  --foreground-accent: #999999;
 }
 
 @theme inline {
@@ -19,10 +20,18 @@
   --color-separation-border: var(--separation-border);
   --color-input-border: var(--input-border);
   --color-background-accent: var(--background-accent);
+  --color-foreground-accent: var(--foreground-accent);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  button:not([disabled]),
+  [role='button']:not([disabled]) {
+    cursor: pointer;
+  }
 }

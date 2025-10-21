@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SportVenuesCards } from './SportVenuesCards';
 import { SportVenuesList } from './SportVenuesList';
-import Image from 'next/image';
+
 import { DisplayModeButton } from './DisplayModeButton';
 
 export function SportVenuesScrollable() {
@@ -23,9 +23,11 @@ export function SportVenuesScrollable() {
         />
       </div>
 
-      {displayMode === 'cards' && <SportVenuesCards />}
+      <div className='h-[600] w-160'>
+        {displayMode === 'cards' && <SportVenuesCards />}
 
-      {displayMode === 'list' && <SportVenuesList />}
+        {displayMode === 'list' && <SportVenuesList />}
+      </div>
     </div>
   );
 }
