@@ -1,23 +1,24 @@
-import Link from 'next/link';
 import Image from 'next/image';
+
+import { NavLink } from './NavLink';
 
 export function Header() {
   return (
-    <>
+    <div className='mt-primary mb-primary ml-primary flex flex-wrap content-center items-center justify-items-center gap-4'>
       <Image
         src='/logo.jpg'
         width={200}
-        height={150}
+        height={160}
         alt='Logo image of the company'
       />
 
-      <nav className='flex'>
-        <Link href='/sport-venues'>Sports-venues</Link>
+      <nav className='flex justify-items-center gap-4'>
+        <NavLink href='/sport-venues'>Sports Venues</NavLink>
 
-        <Link href='/about-us'>About Us</Link>
+        <NavLink href='/about-us'>About Us</NavLink>
 
-        <Link href='/sign-up'>Sign up</Link>
+        <NavLink href='/sign-up'>Sign up</NavLink>
       </nav>
-    </>
+    </div>
   );
 }

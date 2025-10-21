@@ -1,5 +1,5 @@
 import { environment } from '@/config/environment';
-import { SportVenuesOverview } from '@/features/sport-venues/components/sport-venues-overview';
+import { SportVenuesOverview } from '@/features/sport-venues/components/SportVenuesOverview';
 import { SportVenue } from '@/features/sport-venues/models/sport-venue';
 
 export default async function SportVenues() {
@@ -9,8 +9,6 @@ export default async function SportVenues() {
 
   return (
     <>
-      <h1> Sport Venues {sportVenues.length} </h1>
-
       <SportVenuesOverview sportVenues={sportVenues} />
     </>
   );
