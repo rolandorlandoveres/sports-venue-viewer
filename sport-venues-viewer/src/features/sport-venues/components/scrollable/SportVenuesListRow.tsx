@@ -5,9 +5,11 @@ import { ViewLocationButton } from './ViewLocationButton';
 export function SportVenuesListRow({
   index,
   filteredVenues,
+  selectVenue,
   style,
 }: RowComponentProps<{
   filteredVenues: SportVenue[];
+  selectVenue: (newVenue: SportVenue) => void;
 }>) {
   const item = filteredVenues[index];
 
@@ -29,7 +31,7 @@ export function SportVenuesListRow({
           </div>
         </div>
 
-        <ViewLocationButton />
+        <ViewLocationButton onClick={() => selectVenue(item)} />
       </div>
 
       {index !== 0 && index !== filteredVenues.length - 1 && (

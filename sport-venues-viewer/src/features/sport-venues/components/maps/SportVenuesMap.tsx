@@ -1,29 +1,54 @@
-import { environment } from '@/config/environment';
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
-import { useAppSelector } from '../../store/hooks';
+import { useEffect } from 'react';
+import { SportVenue } from '../../models/sport-venue';
+import { Map, Marker, useMap } from '@vis.gl/react-google-maps';
+import { SelectedVenueInfoWindow } from './SelectedVenueInfoWindow';
 
-export function SportVenuesMap() {
-  const filteredSportVenues = useAppSelector(
-    (state) => state.sportVenues.filteredSportVenues,
-  );
+export function SportVenuesMap({
+  filteredVenues: sportVenues,
+  selectedVenue,
+}: {
+  filteredVenues: SportVenue[];
+  selectedVenue: SportVenue | null;
+}) {
+  const defaultCenter = {
+    lat: sportVenues[0].latitude,
+    lng: sportVenues[0].longitude,
+  };
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (!map || !selectedVenue) {
+      return;
+    }
+
+    map.panTo({ lat: selectedVenue.latitude, lng: selectedVenue.longitude });
+
+    map.setZoom(18);
+  }, [map, selectedVenue]);
 
   return (
-    <APIProvider apiKey={environment.googleMapsApiKey}>
-      <Map
-        style={{ width: '100%', height: '700px' }}
-        defaultCenter={{ lat: 53.09503173828125, lng: 6.0878753662109375 }}
-        defaultZoom={18}
-        gestureHandling='greedy'
-        disableDefaultUI
-      >
-        {filteredSportVenues.map((sv) => (
-          <Marker
-            key={sv.id}
-            position={{ lat: sv.latitude, lng: sv.longitude }}
-            icon={{ url: '/pin.svg' }}
-          />
-        ))}
-      </Map>
-    </APIProvider>
+    <Map
+      style={{ width: '100%', height: '700px' }}
+      mapId={'bf51a910020fa25a'}
+      defaultCenter={defaultCenter}
+      defaultZoom={18}
+      gestureHandling='greedy'
+      disableDefaultUI
+    >
+      {sportVenues.map((sv) => (
+        <Marker
+          key={sv.id}
+          position={{ lat: sv.latitude, lng: sv.longitude }}
+          icon={{
+            url: sv.id === selectedVenue?.id ? '/selected-pin.svg' : 'pin.svg',
+          }}
+        />
+      ))}
+
+      {selectedVenue && (
+        <SelectedVenueInfoWindow selectedVenue={selectedVenue} />
+      )}
+    </Map>
   );
 }

@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from './makeStore';
 interface SportVenuesState {
   allSportVenues: SportVenue[];
   filteredSportVenues: SportVenue[];
+  selectedVenue: SportVenue | null;
 }
 
 export interface VenuesFilterActionPayload {
@@ -16,6 +17,7 @@ export interface VenuesFilterActionPayload {
 const initialState: SportVenuesState = {
   allSportVenues: [],
   filteredSportVenues: [],
+  selectedVenue: null,
 };
 
 export const sportVenuesSlice = createSlice({
@@ -27,6 +29,13 @@ export const sportVenuesSlice = createSlice({
     },
     setFilteredVenues: (state, action: PayloadAction<SportVenue[]>) => {
       state.filteredSportVenues = action.payload;
+    },
+    setSelectedVenue: (state, action: PayloadAction<SportVenue | null>) => {
+      state.selectedVenue = action.payload;
+    },
+
+    unsetSelectedVenue: (state) => {
+      state.selectedVenue = null;
     },
   },
 });
@@ -60,7 +69,8 @@ export const filterVenues =
     dispatch(sportVenuesSlice.actions.setFilteredVenues(filteredSportVenues));
   };
 
-export const { initializeVenues } = sportVenuesSlice.actions;
+export const { initializeVenues, setSelectedVenue, unsetSelectedVenue } =
+  sportVenuesSlice.actions;
 
 export const selectSportVenues = (state: RootState) =>
   state.sportVenues.allSportVenues;

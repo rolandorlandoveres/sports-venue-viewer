@@ -10,8 +10,12 @@ export function SportVenuesCard({
   columnIndex,
   rowIndex,
   filteredVenues,
+  selectVenue,
   style,
-}: CellComponentProps<{ filteredVenues: SportVenue[] }>) {
+}: CellComponentProps<{
+  filteredVenues: SportVenue[];
+  selectVenue: (newVenue: SportVenue) => void;
+}>) {
   const itemIndex = rowIndex * 2 + (columnIndex % 2);
   const item = filteredVenues[itemIndex];
 
@@ -33,7 +37,7 @@ export function SportVenuesCard({
         {item.addressLine2}
       </p>
 
-      <ViewLocationButton onClick={() => {}} />
+      <ViewLocationButton onClick={() => selectVenue(item)} />
     </div>
   );
 }
