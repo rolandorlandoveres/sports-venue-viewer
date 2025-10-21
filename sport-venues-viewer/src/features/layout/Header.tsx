@@ -13,7 +13,7 @@ export function Header() {
       />
 
       <nav className='flex justify-items-center gap-9 align-middle'>
-        <NavLink href='/sport-venues'>Sports Venues</NavLink>
+        <NavLink href='/sport-venues'>Sport Venues</NavLink>
 
         <NavLink href='/about-us'>About Us</NavLink>
 
