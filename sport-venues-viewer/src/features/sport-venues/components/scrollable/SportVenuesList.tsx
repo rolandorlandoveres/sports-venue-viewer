@@ -12,7 +12,7 @@ export function SportVenuesList() {
     <List
       rowComponent={SportVenuesListRow}
       rowCount={filteredVenues.length}
-      rowHeight={50}
+      rowHeight={80}
       rowProps={{ filteredVenues }}
     />
   );
