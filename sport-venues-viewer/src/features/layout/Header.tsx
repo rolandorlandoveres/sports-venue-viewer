@@ -4,7 +4,7 @@ import { NavLink } from './NavLink';
 
 export function Header() {
   return (
-    <div className='mt-primary mb-primary ml-primary flex flex-wrap content-center items-center justify-items-center gap-4'>
+    <div className='mt-primary mb-primary ml-primary flex flex-wrap content-center items-center justify-items-center gap-16'>
       <Image
         src='/logo.jpg'
         width={200}
@@ -12,7 +12,7 @@ export function Header() {
         alt='Logo image of the company'
       />
 
-      <nav className='flex justify-items-center gap-4'>
+      <nav className='flex justify-items-center gap-9 align-middle'>
         <NavLink href='/sport-venues'>Sports Venues</NavLink>
 
         <NavLink href='/about-us'>About Us</NavLink>

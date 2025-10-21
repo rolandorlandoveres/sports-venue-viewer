@@ -5,6 +5,8 @@
   --foreground: #333333;
   --primary: #009dda;
   --primary-space: 1.5rem;
+  --separation-border: #eeeeee;
+  --input-border: #dddddd;
 }
 
 @theme inline {
@@ -13,6 +15,8 @@
   --font-josephine: var(--font-josephine);
   --color-primary: var(--primary);
   --margin-primary: var(--primary-space);
+  --color-separation-border: var(--separation-border);
+  --color-input-border: var(--input-border);
 }
 
 body {
