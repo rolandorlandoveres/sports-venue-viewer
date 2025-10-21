@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { AppStore, makeStore } from './makeStore';
-import { SportVenue } from '@sport-venues/models/sport-venue';
+import { SportVenue } from '@/features/sport-venues/models/sportVenue';
 import { initializeVenues } from './sportVenuesSlice';
 
 export default function StoreProvider({

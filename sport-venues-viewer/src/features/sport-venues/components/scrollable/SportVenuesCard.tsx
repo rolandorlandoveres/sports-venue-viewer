@@ -1,7 +1,7 @@
 import { CellComponentProps } from 'react-window';
 import Image from 'next/image';
-import { SportVenue } from '../../models/sport-venue';
 import { ViewLocationButton } from './ViewLocationButton';
+import { VenueCellComponentData } from '@/features/sport-venues/models/venueCellComponentData';
 
 const truncate = (text: string, length = 28) =>
   text.length > length ? `${text.substring(0, length)}...` : text;
@@ -12,10 +12,7 @@ export function SportVenuesCard({
   filteredVenues,
   selectVenue,
   style,
-}: CellComponentProps<{
-  filteredVenues: SportVenue[];
-  selectVenue: (newVenue: SportVenue) => void;
-}>) {
+}: CellComponentProps<VenueCellComponentData>) {
   const itemIndex = rowIndex * 2 + (columnIndex % 2);
   const item = filteredVenues[itemIndex];
 

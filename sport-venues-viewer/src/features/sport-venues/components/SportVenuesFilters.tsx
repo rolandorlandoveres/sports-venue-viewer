@@ -1,14 +1,13 @@
 import { FilterInput } from '@/features/ui/FilterInput';
 import { useState, KeyboardEvent, ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
 import {
   filterVenues,
   VenuesFilterActionPayload,
-} from '@sport-venues/store/sportVenuesSlice';
-import { AppDispatch } from '@sport-venues/store/makeStore';
+  useAppDispatch,
+} from '@sport-venues/store';
 
 export function SportVenuesFilter() {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const [city, setCityFilter] = useState('');
   const [tag, setTagFilter] = useState('');

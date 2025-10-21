@@ -1,16 +1,14 @@
 import { RowComponentProps } from 'react-window';
-import { SportVenue } from '@sport-venues/models/sport-venue';
+import { SportVenue } from '@/features/sport-venues/models/sportVenue';
 import { ViewLocationButton } from './ViewLocationButton';
+import { VenueCellComponentData } from '@/features/sport-venues/models/venueCellComponentData';
 
 export function SportVenuesListRow({
   index,
   filteredVenues,
   selectVenue,
   style,
-}: RowComponentProps<{
-  filteredVenues: SportVenue[];
-  selectVenue: (newVenue: SportVenue) => void;
-}>) {
+}: RowComponentProps<VenueCellComponentData>) {
   const item = filteredVenues[index];
 
   return (

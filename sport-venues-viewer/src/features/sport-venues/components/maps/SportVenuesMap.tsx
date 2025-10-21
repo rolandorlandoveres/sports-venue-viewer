@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SportVenue } from '../../models/sport-venue';
+import { SportVenue } from '../../models/sportVenue';
 import { Map, Marker, useMap } from '@vis.gl/react-google-maps';
 import { SelectedVenueInfoWindow } from './SelectedVenueInfoWindow';
 

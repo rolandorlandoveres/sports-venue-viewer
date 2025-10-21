@@ -1,17 +1,15 @@
 import { SkewedActionButton } from '@/features/ui/SkewedActionButton';
 import { InfoWindow } from '@vis.gl/react-google-maps';
-import { SportVenue } from '../../models/sport-venue';
+import { SportVenue } from '@/features/sport-venues/models/sportVenue';
 import Image from 'next/image';
-import { useAppDispatch } from '../../store/hooks';
-import { AppDispatch } from '../../store/makeStore';
-import { unsetSelectedVenue } from '../../store/sportVenuesSlice';
+import { useAppDispatch, unsetSelectedVenue } from '@sport-venues/store';
 
 export function SelectedVenueInfoWindow({
   selectedVenue,
 }: {
   selectedVenue: SportVenue;
 }) {
-  const dispatch = useAppDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   return (
     <InfoWindow

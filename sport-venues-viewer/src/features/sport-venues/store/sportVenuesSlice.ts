@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { SportVenue } from '@sport-venues/models/sport-venue';
+import { SportVenue } from '@/features/sport-venues/models/sportVenue';
 import { AppDispatch, RootState } from './makeStore';
 
 interface SportVenuesState {

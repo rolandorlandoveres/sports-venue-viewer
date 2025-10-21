@@ -1,6 +1,6 @@
 import { environment } from '@/config/environment';
 import { APIProvider } from '@vis.gl/react-google-maps';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '@sport-venues/store';
 import { SportVenuesMap } from './SportVenuesMap';
 
 export function SportVenuesMapContainer() {

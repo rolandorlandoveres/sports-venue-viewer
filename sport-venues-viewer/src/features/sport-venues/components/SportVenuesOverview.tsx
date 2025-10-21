@@ -1,6 +1,6 @@
 'use client';
 
-import { SportVenue } from '../models/sport-venue';
+import { SportVenue } from '../models/sportVenue';
 import StoreProvider from '../store/StoreProvider';
 import { SportVenuesFilter } from './SportVenuesFilters';
 import { SportVenuesMapContainer } from './maps/SportVenuesMapContainer';
