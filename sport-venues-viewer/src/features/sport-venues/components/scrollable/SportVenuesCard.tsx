@@ -1,7 +1,7 @@
 import { CellComponentProps } from 'react-window';
 import Image from 'next/image';
 import { ViewLocationButton } from './ViewLocationButton';
-import { VenueCellComponentData } from '@/features/sport-venues/models/venueCellComponentData';
+import { VenueCellComponentData } from '@sport-venues/models/venueCellComponentData';
 
 const truncate = (text: string, length = 28) =>
   text.length > length ? `${text.substring(0, length)}...` : text;
@@ -34,7 +34,12 @@ export function SportVenuesCard({
         {item.addressLine2}
       </p>
 
-      <ViewLocationButton onClick={() => selectVenue(item)} />
+      <div className='ml-0.1'>
+        <ViewLocationButton
+          className='ml-3'
+          onClick={() => selectVenue(item)}
+        />
+      </div>
     </div>
   );
 }

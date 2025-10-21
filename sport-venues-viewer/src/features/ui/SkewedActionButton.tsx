@@ -8,8 +8,8 @@ export interface SkewedActionButtonProps extends ComponentProps<'button'> {
 export function SkewedActionButton(props: SkewedActionButtonProps) {
   return (
     <button
-      className='bg-primary text-background hover:bg-primary-hover flex -skew-x-20 gap-3 p-2.5 font-medium'
       {...props}
+      className={`bg-primary text-background hover:bg-primary-hover pointer-events-auto flex -skew-x-20 gap-3 p-2.5 font-medium ${props.className}`}
     >
       <div className='skew-x-20'>{props.text}</div>
 

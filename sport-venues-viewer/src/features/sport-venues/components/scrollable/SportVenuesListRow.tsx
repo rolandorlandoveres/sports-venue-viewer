@@ -1,5 +1,4 @@
 import { RowComponentProps } from 'react-window';
-import { SportVenue } from '@/features/sport-venues/models/sportVenue';
 import { ViewLocationButton } from './ViewLocationButton';
 import { VenueCellComponentData } from '@/features/sport-venues/models/venueCellComponentData';
 
@@ -33,7 +32,10 @@ export function SportVenuesListRow({
       </div>
 
       {index !== 0 && index !== filteredVenues.length - 1 && (
-        <hr style={style} className='border-separation-border' />
+        <hr
+          style={{ transform: style.transform }}
+          className='border-separation-border'
+        />
       )}
     </>
   );
