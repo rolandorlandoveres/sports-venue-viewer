@@ -3,8 +3,8 @@
 import { SportVenue } from '../models/sport-venue';
 import StoreProvider from '../store/StoreProvider';
 import { SportVenuesFilter } from './SportVenuesFilters';
-import { SportVenuesList } from './SportVenuesList';
 import { SportVenuesMap } from './SportVenuesMap';
+import { SportVenuesScrollable } from './SportVenuesScrollable';
 
 export function SportVenuesOverview({
   sportVenues,
@@ -16,7 +16,7 @@ export function SportVenuesOverview({
       <SportVenuesFilter />
 
       <div className='flex'>
-        <SportVenuesList />
+        <SportVenuesScrollable />
 
         <SportVenuesMap />
       </div>
