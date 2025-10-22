@@ -11,7 +11,7 @@ export function SportVenuesCards() {
       cellProps={{ filteredVenues, selectVenue }}
       columnCount={2}
       columnWidth={300}
-      rowCount={filteredVenues.length / 2}
+      rowCount={Math.ceil(filteredVenues.length / 2)}
       rowHeight={250}
     />
   );

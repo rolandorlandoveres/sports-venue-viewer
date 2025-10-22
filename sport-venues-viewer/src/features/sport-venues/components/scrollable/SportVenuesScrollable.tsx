@@ -3,8 +3,12 @@ import { SportVenuesCards } from './SportVenuesCards';
 import { SportVenuesList } from './SportVenuesList';
 
 import { DisplayModeButton } from './DisplayModeButton';
+import { useAppSelector } from '../../store';
 
 export function SportVenuesScrollable() {
+  const filteredVenuesLength = useAppSelector(
+    (state) => state.sportVenues.filteredSportVenues.length,
+  );
   const [displayMode, setDisplayMode] = useState<'cards' | 'list'>('cards');
 
   return (
@@ -26,9 +30,15 @@ export function SportVenuesScrollable() {
       </div>
 
       <div className='h-[600] w-160'>
-        {displayMode === 'cards' && <SportVenuesCards />}
+        {filteredVenuesLength > 0 ? (
+          <>
+            {displayMode === 'cards' && <SportVenuesCards />}
 
-        {displayMode === 'list' && <SportVenuesList />}
+            {displayMode === 'list' && <SportVenuesList />}
+          </>
+        ) : (
+          <p className='ml-primary'> No results! </p>
+        )}
       </div>
     </div>
   );

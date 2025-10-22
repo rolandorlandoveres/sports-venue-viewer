@@ -66,8 +66,8 @@ export const SportVenuesMap = React.memo(
         gestureHandling='greedy'
         defaultZoom={18}
         defaultCenter={{
-          lat: sportVenues[0].latitude ?? 0,
-          lng: sportVenues[0].longitude ?? 0,
+          lat: sportVenues[0]?.latitude ?? 0,
+          lng: sportVenues[0]?.longitude ?? 0,
         }}
         onBoundsChanged={onBoundsChanged}
       >

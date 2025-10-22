@@ -14,6 +14,10 @@ export function SportVenuesCard({
   style,
 }: CellComponentProps<VenueCellComponentData>) {
   const itemIndex = rowIndex * 2 + (columnIndex % 2);
+  if (itemIndex > filteredVenues.length - 1) {
+    return null;
+  }
+
   const item = filteredVenues[itemIndex];
 
   return (
