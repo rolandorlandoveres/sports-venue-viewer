@@ -29,8 +29,12 @@ export const sportVenuesSlice = createSlice({
     },
     setFilteredVenues: (state, action: PayloadAction<SportVenue[]>) => {
       state.filteredSportVenues = action.payload;
+
+      if (action.payload.length === 0) {
+        state.selectedVenue = null;
+      }
     },
-    setSelectedVenue: (state, action: PayloadAction<SportVenue | null>) => {
+    setSelectedVenue: (state, action: PayloadAction<SportVenue>) => {
       state.selectedVenue = action.payload;
     },
 
