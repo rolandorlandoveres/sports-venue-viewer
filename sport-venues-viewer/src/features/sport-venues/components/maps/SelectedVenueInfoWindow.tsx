@@ -19,6 +19,7 @@ export function SelectedVenueInfoWindow({
       }}
       pixelOffset={[0, -30]}
       onClose={() => dispatch(unsetSelectedVenue())}
+      disableAutoPan
     >
       <div className='flex flex-col content-center justify-center gap-2 align-middle'>
         <Image

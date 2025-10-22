@@ -1,64 +1,82 @@
-import { useCallback, useEffect, useEffectEvent } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SportVenue } from '../../models/sportVenue';
-import { Map, Marker, useMap } from '@vis.gl/react-google-maps';
+import {
+  Map,
+  MapCameraChangedEvent,
+  Marker,
+  useMap,
+} from '@vis.gl/react-google-maps';
 import { SelectedVenueInfoWindow } from './SelectedVenueInfoWindow';
 import { setSelectedVenue, useAppDispatch } from '../../store';
+import React from 'react';
 
-export function SportVenuesMap({
-  filteredVenues: sportVenues,
-  selectedVenue,
-}: {
-  filteredVenues: SportVenue[];
-  selectedVenue: SportVenue | null;
-}) {
-  const map = useMap();
+export const SportVenuesMap = React.memo(
+  ({
+    filteredVenues: sportVenues,
+    selectedVenue,
+  }: {
+    filteredVenues: SportVenue[];
+    selectedVenue: SportVenue | null;
+  }) => {
+    const dispatch = useAppDispatch();
 
-  const dispatch = useAppDispatch();
+    const map = useMap();
 
-  const goToVenue = useCallback(
-    (venue: SportVenue) => {
-      map?.panTo({ lat: venue.latitude, lng: venue.longitude });
-      map?.setZoom(18);
-    },
-    [map],
-  );
+    const [visibleVenues, setVisibleVenues] = useState<SportVenue[]>([]);
 
-  useEffect(() => {
-    if (!map || !selectedVenue) {
-      return;
-    }
+    const goToVenue = useCallback(
+      (venue: SportVenue) => {
+        map?.panTo({ lat: venue.latitude, lng: venue.longitude });
+        map?.setZoom(18);
+      },
+      [map],
+    );
 
-    goToVenue(selectedVenue);
-  }, [map, selectedVenue]);
+    useEffect(() => {
+      if (!map || !selectedVenue) {
+        return;
+      }
+      goToVenue(selectedVenue);
+    }, [map, selectedVenue]);
 
-  useEffect(() => {
-    if (!map || sportVenues.length <= 0) {
-      return;
-    }
-
-    goToVenue(sportVenues[0]);
-  }, [map, sportVenues]);
-
-  return (
-    <Map
-      style={{ width: '100%', height: '700px' }}
-      gestureHandling='greedy'
-      disableDefaultUI
-    >
-      {sportVenues.map((sv) => (
+    const sportVenueMarkers = useMemo(() => {
+      return visibleVenues.map((sv) => (
         <Marker
           key={sv.id}
           position={{ lat: sv.latitude, lng: sv.longitude }}
           onClick={() => dispatch(setSelectedVenue(sv))}
-          icon={{
-            url: sv.id === selectedVenue?.id ? '/selected-pin.svg' : 'pin.svg',
-          }}
+          icon='/pin.svg'
         />
-      ))}
+      ));
+    }, [visibleVenues]);
 
-      {selectedVenue && (
-        <SelectedVenueInfoWindow selectedVenue={selectedVenue} />
-      )}
-    </Map>
-  );
-}
+    function onBoundsChanged(event: MapCameraChangedEvent): void {
+      const bounds = event.map.getBounds();
+
+      setVisibleVenues(
+        sportVenues.filter((sv) =>
+          bounds?.contains({ lat: sv.latitude, lng: sv.longitude }),
+        ),
+      );
+    }
+
+    return (
+      <Map
+        style={{ width: '100%', height: '700px' }}
+        gestureHandling='greedy'
+        defaultZoom={18}
+        defaultCenter={{
+          lat: sportVenues[0].latitude ?? 0,
+          lng: sportVenues[0].longitude ?? 0,
+        }}
+        onBoundsChanged={onBoundsChanged}
+      >
+        {sportVenueMarkers}
+
+        {selectedVenue && (
+          <SelectedVenueInfoWindow selectedVenue={selectedVenue} />
+        )}
+      </Map>
+    );
+  },
+);

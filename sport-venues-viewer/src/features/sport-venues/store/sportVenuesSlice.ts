@@ -32,7 +32,23 @@ export const sportVenuesSlice = createSlice({
 
       if (action.payload.length === 0) {
         state.selectedVenue = null;
+
+        return;
       }
+
+      if (
+        state.selectedVenue &&
+        !state.filteredSportVenues.find(
+          (sv) => sv.id === state.selectedVenue!.id,
+        )
+      ) {
+        state.selectedVenue = null;
+      }
+
+      return state;
+    },
+    resetFilteredVenues: (state) => {
+      state.filteredSportVenues = state.allSportVenues;
     },
     setSelectedVenue: (state, action: PayloadAction<SportVenue>) => {
       state.selectedVenue = action.payload;
@@ -53,7 +69,8 @@ export const filterVenues =
     const trimmedTag = tag.toLowerCase().trim();
 
     if (trimmedCity.length === 0 && trimmedTag.length === 0) {
-      dispatch(sportVenuesSlice.actions.setFilteredVenues(allSportVenues));
+      dispatch(sportVenuesSlice.actions.resetFilteredVenues());
+      return;
     }
 
     const stringInclude = (left: string, right: string) =>

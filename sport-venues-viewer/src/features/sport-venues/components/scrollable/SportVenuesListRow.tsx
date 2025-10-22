@@ -13,7 +13,7 @@ export function SportVenuesListRow({
   return (
     <>
       <div
-        className='flex items-center justify-between p-3 align-middle'
+        className='pl-primary flex items-center justify-between p-3 align-middle'
         style={style}
       >
         <div className='flex flex-col justify-start gap-0.5'>
@@ -32,10 +32,12 @@ export function SportVenuesListRow({
       </div>
 
       {index !== 0 && index !== filteredVenues.length - 1 && (
-        <hr
-          style={{ transform: style.transform }}
-          className='border-separation-border'
-        />
+        <div className='px-primary'>
+          <hr
+            style={{ transform: style.transform }}
+            className='border-separation-border'
+          />
+        </div>
       )}
     </>
   );
